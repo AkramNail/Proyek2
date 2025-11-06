@@ -8,17 +8,17 @@
 </head>
 <body>
     <header>
-        @include('layouts.header')
+        @include('layout.header')
     </header>
 
-    @include('layouts.nav')
+    @include('layout.nav')
 
     <div class="container">
         @yield('content')
     </div>
 
     <footer>
-        @include('layouts.footer')
+        @include('layout.footer')
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>

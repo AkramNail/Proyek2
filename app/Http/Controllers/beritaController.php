@@ -11,7 +11,9 @@ class beritaController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Berita';
+        $slug = 'berita';
+        return view('berita.index', compact('title', 'slug'));
     }
 
     /**

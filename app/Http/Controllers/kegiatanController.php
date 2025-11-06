@@ -11,8 +11,7 @@ class kegiatanController extends Controller
      */
     public function index()
     {
-        $title = 'Kegiatan';
-        $slug = 'kegiatan';
+        
     }
 
     /**

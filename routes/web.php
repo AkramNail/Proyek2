@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\beritaController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//berita ukm untuk anggota
+Route::get('berita', [beritaController::class, 'index']);
+
+//tampilan ukm untuk anggota
+Route::get('ukm/{id}', [beritaController::class, 'index']);
+
+
+Route::get('profil/{id}', [beritaController::class, 'index']);
