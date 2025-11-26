@@ -16,22 +16,28 @@ class anggotaSeeder extends Seeder
         
         DB::table('anggota')->insert([
             [
-                'id_anggota' => 1,
-                'nama' => 'Asep Udin',
-                'email' => 'UdinAsep10@gmail.com',
-                'Password' => bcrypt('password123'),
+                'nim' => 204031,
+                'nama' => 'Lucille',
+                'email' => 'bododah123@gmail.com',
+                'Password' => 'password123',
+                'role' => 'anggota',
+                'ukm' => 0
             ],
             [
-                'id_anggota' => 2,
-                'nama' => 'Yanto XD',
-                'email' => '128Gas@gmail.com',
-                'Password' => bcrypt('password123'),
+                'nim' => 204033,
+                'nama' => 'Akun admin',
+                'email' => 'akunkorban1099@gmail.com',
+                'Password' => 'password123',
+                'role' => 'admin',
+                'ukm' => 0
             ],
             [
-                'id_anggota' => 3,
-                'nama' => 'Udin Pertama',
-                'email' => 'AkunPertama@gmail.com',
-                'Password' => bcrypt('password123'),
+                'nim' => 204032,
+                'nama' => 'Akun pengurus',
+                'email' => 'udinakram1000@gmail.com',
+                'Password' => 'password123',
+                'role' => 'pengurus',
+                'ukm' => 1
             ],
         ]);
     }

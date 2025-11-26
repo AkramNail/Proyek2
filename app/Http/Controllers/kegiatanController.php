@@ -2,16 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\anggotaKegiatan;
+use App\Models\kegiatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class kegiatanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function pengurusKegiatan()
     {
         
+        $title = 'List Kegiatan UKM';
+        $slug = 'List Kegiatan UKM';
+
+        $idUKM = Auth::user()->ukm;
+
+        $dataAnggota = anggotaKegiatan::where('id_Ukm', $idUKM)
+            ->get();
+
+        $dataKegiatan = kegiatan::where('id_Ukm', $idUKM)
+            ->get();
+
+        return view('Pengurus/Kegiatan.index', compact(
+            'title', 'slug', 
+            'dataKegiatan', 'dataAnggota'
+        ));
+
+
     }
 
     /**

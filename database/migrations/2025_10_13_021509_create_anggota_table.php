@@ -12,10 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('anggota', function (Blueprint $table) {
-            $table->integer('id_anggota')->primary();
+            $table->id();
+            $table->bigInteger('nim');
             $table->string('nama', 100);
-            $table->string('email', 100);
+            $table->string('email', 100)->unique();
             $table->string('Password', 255);
+            $table->string('role')->default('anggota');
+            $table->integer('ukm')->default(0);
+            $table->timestamps();
+            $table->string('otp')->nullable();
+            $table->timestamp('otp_expires_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
         });
     }
 

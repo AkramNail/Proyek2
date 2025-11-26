@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\anggota;
+use App\Models\divisi;
+use App\Models\anggotaUkm;
+use App\Models\ukm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class pengurusController extends Controller
 {
@@ -11,54 +16,41 @@ class pengurusController extends Controller
      */
     public function index()
     {
+
+        $title = 'List Anggota UKM';
+        $slug = 'List Anggota UKM';
         
+        $idUKM = Auth::user()->ukm;
+
+        $dataAnggota = anggotaUkm::where('anggota_ukm.id_Ukm', $idUKM)
+            ->join('anggota', 'anggota_ukm.id_anggota', '=', 'anggota.id')
+            ->join('divisi', 'anggota_ukm.id_divisi', '=', 'divisi.id_divisi')
+            ->get();
+
+        return view('Pengurus/Anggota.index', compact( 
+            'title', 'slug', 'dataAnggota'
+        ));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function profilUKM()
     {
-        //
+        
+        $title = 'Profil UKM';
+        $slug = 'Profil UKM';
+
+        $idUKM = Auth::user()->ukm;
+
+        $dataUkm = ukm::where(
+            'id_Ukm', $idUKM
+        )->first();
+
+        return view('Pengurus/ProfilUKM.index', compact(
+            'title', 'slug',
+            'dataUkm'
+        ));
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

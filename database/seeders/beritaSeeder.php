@@ -19,8 +19,17 @@ class beritaSeeder extends Seeder
                 'id_Berita' => 1,
                 'judul_berita' => 'Berita Pertama',
                 'isi_berita' => 'Ini adalah isi dari berita pertama.',
-                'tanggal_berita' => '2024-10-01',
-                'foto_berita' => 'foto_berita_pertama.jpg',
+                'created_at' => '2024-10-01',
+                'foto_berita' => 'berita1.jpeg',
+                'id_UKM' => 1,
+            ],
+            [
+                'id_Berita' => 2,
+                'judul_berita' => 'Berita Kedua',
+                'isi_berita' => 'Ini adalah demo berita kedua',
+                'created_at' => '2025-11-01',
+                'foto_berita' => 'berita2.jpeg',
+                'id_UKM' => 3,
             ],
         ]);
 

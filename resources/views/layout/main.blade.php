@@ -7,13 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
     <header>
         @include('layout.header')
     </header>
 
     @include('layout.nav')
 
-    <div class="container">
+    <!-- Kontainer fleksibel (bisa container atau container-fluid) -->
+    <div class="{{ isset($fullwidth) && $fullwidth ? 'container-fluid p-0' : 'container' }}">
         @yield('content')
     </div>
 

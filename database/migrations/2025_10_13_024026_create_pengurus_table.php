@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama', 150);
             $table->string('email', 150);
             $table->string('password', 255);
-            $table->string('id_Ukm', 50);
+            $table->integer('id_Ukm');
         });
     }
 

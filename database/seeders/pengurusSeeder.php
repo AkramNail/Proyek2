@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,11 @@ class pengurusSeeder extends Seeder
     {
         DB::table('pengurus')->insert([
             
+            ['id_pengurus' => 1,
+            'nama' => 'Asep bensin',
+            'email' => 'Asep@gmail.com',
+            'password' => 'password123',
+            'id_Ukm' => 1]
         ]);
     }
 }

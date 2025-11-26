@@ -9,5 +9,6 @@ class anggotaUkm extends Model
 {
     use HasFactory;
     public $table = 'anggota_ukm';
+    
 
 }
