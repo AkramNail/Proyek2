@@ -4,6 +4,20 @@
 
 <div class="container mt-4">
 
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+
+    @if($errors->any())
+        <div class="alert alert-danger">
+            {{ $errors->first('error') }}
+        </div>
+    @endif
+
+
     {{-- Logo UKM --}}
     <div class="mb-4">
         <img src="{{ asset('storage/Image/UKM/'.$dataUkm->logo_Ukm) }}" 
@@ -27,14 +41,14 @@
     <div class="d-flex gap-3">
 
         {{-- Tombol Edit --}}
-        <a href="#"
+        <a href="{{ url('/pengurus/profilUKM/edit') }}"
            class="btn border-2 rounded-pill px-4 py-2"
            style="border-color: orange; color: orange; background: white;">
             Edit profil UKM
         </a>
 
         {{-- Tombol Lihat --}}
-        <a href="#"
+        <a href="{{ url('/UKM'.$dataUkm->id_Ukm) }}"
            class="btn border-2 rounded-pill px-4 py-2"
            style="border-color: #00e676; color: #00c853; background: white;">
             Lihat profil UKM

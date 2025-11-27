@@ -34,9 +34,9 @@
 
             <!-- Isi Berita -->
             <div class="p-3 rounded bg-light">
-                <p class="mb-0" style="font-size: 1.1rem; line-height: 1.7;">
-                    {{ $dataBerita->isi_berita }}
-                </p>
+                <div class="p-3 rounded bg-light" style="font-size: 1.1rem; line-height: 1.7;">
+                    {!! nl2br(e($dataBerita->isi_berita)) !!}
+                </div>
             </div>
 
         </div>

@@ -20,7 +20,8 @@ class homeController extends Controller
 
         $dataBerita = berita::join(
             'ukm', 'berita.id_UKM', '=', 'ukm.id_Ukm'
-        )->latest()->take(5)->get();
+        )->latest('berita.created_at')
+        ->take(5)->get();
 
         return view('home', compact(
             'title', 'slug',

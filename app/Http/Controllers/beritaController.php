@@ -7,6 +7,7 @@ use App\Models\ukm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class beritaController extends Controller
 {
@@ -64,6 +65,61 @@ class beritaController extends Controller
 
     }
 
+    public function tambahBerita(){
+
+        $title = 'Tambah Berita UKM';
+        $slug = 'Tambah Berita UKM';
+
+        return view('Pengurus/Berita/tambah.index', compact(
+            'title', 'slug'
+        ));
+
+    }
+
+    public function storeTambahBerita(Request $request){
+
+        // Validasi input
+        $validator = Validator::make($request->all(), [
+            'judul' => 'required',
+            'isi' => 'required',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/pengurus/berita')
+                ->withErrors('eror','eror pastikan anda mengirim gambar bertipe jpg, jpeg, png');
+        }
+
+        $namaFoto = null;
+        if($request->hasFile('foto')){
+
+            $namaFoto = time().'_'.$request->foto->getClientOriginalName();
+            $request->foto->storeAs('public/Image/Berita', $namaFoto);
+
+        }
+
+        $idUKM = Auth::user()->ukm;
+
+        $hasil = berita::insert([
+            'judul_berita' => $request->judul,
+            'isi_berita' => $request->isi,
+            'foto_berita' => $namaFoto,
+            'id_UKM' => $idUKM,
+            'created_at' => now(),
+        ]);
+
+        if(!$hasil){
+
+            return redirect('/pengurus/berita')
+            ->with('error', 'Gagal tambah berita');
+
+        }
+
+        return redirect('/pengurus/berita')
+        ->with('success', 'Berhasil tambah berita');
+
+    }
+
     public function updateBerita(Request $request){
 
         $title = 'Edit Berita UKM';
@@ -86,11 +142,16 @@ class beritaController extends Controller
     public function storeBerita(Request $request){
 
         // Validasi input
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'judul' => 'required',
             'isi' => 'required',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
+
+        if ($validator->fails()) {
+            return redirect('/pengurus/berita')
+                ->withErrors('eror','eror pastikan anda mengirim gambar bertipe jpg, jpeg, png');
+        }
 
         //cek ada foto yang baru masuk atau tidak
         if($request->hasFile('foto')){
@@ -131,5 +192,22 @@ class beritaController extends Controller
 
     }
 
+    public function hapusBerita(Request $request){
+
+        $hasil = berita::where(
+            'id_Berita', $request->id_Berita
+        )->delete();
+
+        if(!$hasil){
+
+            return redirect('/pengurus/berita')
+            ->with('error', 'Gagal hapus berita');
+
+        }
+
+        return redirect('/pengurus/berita')
+        ->with('success', 'Berhasil hapus berita');
+
+    }
 
 }

@@ -93,9 +93,17 @@ Route::middleware(['auth', 'role:pengurus'])->group(function () {
     Route::get('pengurus/berita', [beritaController::class, 'pengurusBerita']);
     Route::post('pengurus/berita/edit', [beritaController::class, 'updateBerita']);
     Route::post('pengurus/berita/store', [beritaController::class, 'storeBerita']);
+    Route::post('pengurus/berita/hapus', [beritaController::class, 'hapusBerita']);
+    Route::get('pengurus/berita/tambah', [beritaController::class, 'tambahBerita']);
+    Route::post('pengurus/berita/storeTambah', [beritaController::class, 'storeTambahBerita']);
 
     Route::get('pengurus/kegitan', [kegiatanController::class, 'pengurusKegiatan']);
+    Route::post('pengurus/kegitan/edit', [kegiatanController::class, 'pengurusKegiatan']);
+    Route::post('pengurus/kegitan/store', [kegiatanController::class, 'pengurusKegiatan']);
+    
     Route::get('pengurus/profilUKM', [pengurusController::class, 'profilUKM']);
+    Route::get('pengurus/profilUKM/edit', [pengurusController::class, 'editProfilUKM']);
+    Route::post('pengurus/profilUKM/store', [pengurusController::class, 'storeProfilUKM']);
 
 });
 

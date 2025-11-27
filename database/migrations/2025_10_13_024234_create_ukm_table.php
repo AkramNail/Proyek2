@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_Ukm', 150);
             $table->string('deskripsi_Ukm', 500);
             $table->string('logo_Ukm', 255);
+            $table->timestamps();
         });
     }
 

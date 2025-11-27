@@ -34,6 +34,19 @@ class kegiatanController extends Controller
 
     }
 
+    public function editKegiatan(Request $request){
+
+        //$dataUKM
+
+    }
+
+    public function storeKegiatan(Request $request){
+
+
+
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
