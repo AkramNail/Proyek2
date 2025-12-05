@@ -17,11 +17,13 @@ class divisiSeeder extends Seeder
             [
                 'id_divisi' => 1,
                 'nama_divisi' => 'Divisi Msuic',
+                'deskripsi_divisi' => 'Divisi yang menangani segala hal yang berhubungan dengan musik dalam UKM tersebut.',
                 'id_Ukm' => 1,
             ],
             [
                 'id_divisi' => 2,
                 'nama_divisi' => 'Divisi Dance',
+                'deskripsi_divisi' => 'Divisi yang bertanggung jawab atas segala aktivitas yang berhubungan dengan tarian dalam UKM tersebut.',
                 'id_Ukm' => 1,
             ]
         ]);

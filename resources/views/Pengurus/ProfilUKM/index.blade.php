@@ -34,7 +34,7 @@
 
     {{-- Deskripsi UKM --}}
     <label class="form-label fw-semibold">Deskripsi UKM</label>
-    <textarea rows="3" 
+    <textarea rows="8" 
               class="form-control border-2 rounded-3 mb-3" 
               readonly>{{ $dataUkm->deskripsi_Ukm }}</textarea>
 
@@ -48,7 +48,7 @@
         </a>
 
         {{-- Tombol Lihat --}}
-        <a href="{{ url('/UKM'.$dataUkm->id_Ukm) }}"
+        <a href="{{ url('/UKM/'.$dataUkm->id_Ukm) }}"
            class="btn border-2 rounded-pill px-4 py-2"
            style="border-color: #00e676; color: #00c853; background: white;">
             Lihat profil UKM

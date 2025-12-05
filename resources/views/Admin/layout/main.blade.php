@@ -7,14 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-        
+    
+
     @include('Admin.layout.header')
 
     @include('Admin.layout.nav')
-
-    <div class="container">
-        @yield('content')
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

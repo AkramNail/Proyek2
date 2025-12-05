@@ -24,8 +24,7 @@ enctype="multipart/form-data">
 
     <div class="mb-3">
         <label class="form-label">isi berita</label>
-        <input type="text" name="deskripsi_Ukm" class="form-control" 
-            value="{{ $dataUkm->deskripsi_Ukm }}" required>
+        <textarea name="deskripsi_Ukm" class="form-control" rows="8" style="resize: vertical;" required>{{ $dataUkm->deskripsi_Ukm }}</textarea>
     </div>
 
     <br><br>

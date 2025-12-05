@@ -12,27 +12,6 @@ use Illuminate\Support\Facades\Validator;
 
 class pengurusController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-
-        $title = 'List Anggota UKM';
-        $slug = 'List Anggota UKM';
-        
-        $idUKM = Auth::user()->ukm;
-
-        $dataAnggota = anggotaUkm::where('anggota_ukm.id_Ukm', $idUKM)
-            ->join('anggota', 'anggota_ukm.id_anggota', '=', 'anggota.id')
-            ->join('divisi', 'anggota_ukm.id_divisi', '=', 'divisi.id_divisi')
-            ->get();
-
-        return view('Pengurus/Anggota.index', compact( 
-            'title', 'slug', 'dataAnggota'
-        ));
-
-    }
 
     public function profilUKM()
     {

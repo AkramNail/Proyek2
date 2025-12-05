@@ -67,7 +67,7 @@ class loginController extends Controller
 
                 $user = anggota::where('email', $request->email)->first();
                 Auth::login($user);
-                return view('home', compact('title', 'slug'));
+                return redirect('/home');
 
             }
             

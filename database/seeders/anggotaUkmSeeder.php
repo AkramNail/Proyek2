@@ -24,8 +24,14 @@ class anggotaUkmSeeder extends Seeder
             ],
             [
                 'id_anggota_ukm' => 2,
-                'id_anggota' => 2,
-                'id_Ukm' => 2,
+                'id_anggota' => 4,
+                'id_Ukm' => 1,
+                'id_divisi' => 2,
+            ],
+            [
+                'id_anggota_ukm' => 3,
+                'id_anggota' => 6,
+                'id_Ukm' => 1,
                 'id_divisi' => 2,
             ],
 

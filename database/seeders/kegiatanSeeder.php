@@ -17,6 +17,7 @@ class kegiatanSeeder extends Seeder
             [
                 'id_kegiatan' => 1,
                 'id_Ukm' => 1,
+                'id_divisi' => 2,
                 'nama_kegiatan' => 'Latihan dance',
                 'deskripsi' => 'Latihan dance mingguan untuk anggota UKM SEBURA.',
                 'jadwal_keigiatan' => '2023-11-01',
@@ -26,6 +27,7 @@ class kegiatanSeeder extends Seeder
                 'id_kegiatan' => 2,
                 'id_Ukm' => 1,
                 'nama_kegiatan' => 'latihan band',
+                'id_divisi' => 1,
                 'deskripsi' => 'Latihan band mingguan untuk anggota UKM SEBURA.',
                 'jadwal_keigiatan' => '2023-11-15',
                 'foto_kegiatan' => 'kegiatan_101.jpg',

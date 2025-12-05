@@ -64,15 +64,15 @@
                     <a class="nav-link {{ ($slug === 'daftar berita') ? 'active' : '' }}" href="/daftarBerita">Berita</a>
                 </li>
 
-                @if (Auth::check() && Auth::user()->role === 'pengurus')
+                @if (Auth::check() && (Auth::user()->role === 'pengurus' || Auth::user()->role === 'pembina' || Auth::user()->role === 'pengurus utama'))
                     <li class="nav-item">
-                        <a class="nav-link" href="/pengurus/daftarAnggota">Pengurus</a>
+                        <a class="nav-link" href="/pengurus/berita">Pengurus</a>
                     </li>
                 @endif
 
-                @if (Auth::check() && Auth::user()->role === 'admin')
+                @if (Auth::check() && (Auth::user()->role === 'admin' || Auth::user()->role === 'super admin'))
                     <li class="nav-item">
-                        <a class="nav-link" href="/pengurus/daftarAnggota">Admin</a>
+                        <a class="nav-link" href="/admin/daftarAkun">Admin</a>
                     </li>
                 @endif
 

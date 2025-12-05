@@ -18,6 +18,6 @@ class anggota extends Authenticatable
         'email',
         'Password',
         'google_id',
-        'otp'
+        'otp',
     ];
 }

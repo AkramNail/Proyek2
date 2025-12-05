@@ -17,8 +17,11 @@ enctype="multipart/form-data">
     </div>
 
     <div class="mb-3">
-        <label class="form-label">isi berita</label>
-        <input type="text" name="isi" class="form-control" required>
+        <label class="form-label">Isi Berita</label>
+        <textarea name="isi" 
+                class="form-control" 
+                rows="6" 
+                required></textarea>
     </div>
 
     <br><br>

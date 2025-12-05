@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\anggota;
+use App\Models\anggotaUkm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class anggotaUkmController extends Controller
 {
@@ -11,54 +15,97 @@ class anggotaUkmController extends Controller
      */
     public function index()
     {
-        //
+
+        $title = 'List Anggota UKM';
+        $slug = 'List Anggota UKM';
+        
+        $idUKM = Auth::user()->ukm;
+
+        if(Auth::user()->role == 'pembina'){
+
+            $dataAnggota = anggotaUkm::where('anggota_ukm.id_Ukm', $idUKM)
+                ->join('anggota', 'anggota_ukm.id_anggota', '=', 'anggota.id')
+                ->join('divisi', 'anggota_ukm.id_divisi', '=', 'divisi.id_divisi')
+                ->get();
+
+        }else{
+            
+            $dataAnggota = anggotaUkm::where('anggota_ukm.id_Ukm', $idUKM)
+                ->join('anggota', 'anggota_ukm.id_anggota', '=', 'anggota.id')
+                ->where('anggota.role', '!=', 'pengurus utama')
+                ->join('divisi', 'anggota_ukm.id_divisi', '=', 'divisi.id_divisi')
+                ->get();
+
+        }
+
+        return view('Pengurus/Anggota.index', compact( 
+            'title', 'slug', 'dataAnggota'
+        ));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function pengurus(Request $request){
+
+        $idUKM = Auth::user()->ukm;
+        $idAnggota = $request->id;
+
+        anggota::where('id', $idAnggota)
+            ->update([
+                'role' => 'pengurus',
+                'ukm' => $idUKM
+            ]);
+        
+        return redirect('pengurus/daftarAnggota')->with('success', 'Behasil mengubah status user menjadi pengurus');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function pengurusUtama(Request $request){
+
+        $idUKM = Auth::user()->ukm;
+        $idAnggota = $request->id;
+
+        anggota::where('id', $idAnggota)
+            ->update([
+                'role' => 'pengurus utama',
+                'ukm' => $idUKM
+            ]);
+        
+        return redirect('pengurus/daftarAnggota')->with('success', 'Behasil mengubah status user menjadi pengurus utama');
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+    public function anggota(Request $request){
+
+        $idUKM = Auth::user()->ukm;
+        $idAnggota = $request->id;
+
+        anggota::where('id', $idAnggota)
+            ->update([
+                'role' => 'anggota',
+                'ukm' => 0
+            ]);
+        
+        return redirect('pengurus/daftarAnggota')->with('success', 'Behasil mengubah status user menjadi anggota');
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+    public function hapus(Request $request){
+
+        $idAnggota = $request->id;
+        $idUKM = Auth::user()->ukm;
+
+        anggota::where('id', $idAnggota)
+            ->update([
+                'role' => 'anggota',
+                'ukm' => 0
+            ]);
+
+        anggotaUkm::where('id_anggota', $idAnggota)
+            ->where('id_Ukm', $idUKM)
+            ->delete();
+        
+        return redirect('pengurus/daftarAnggota')->with('success', 'Behasil menghapus anggota dari UKM');
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

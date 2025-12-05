@@ -26,9 +26,11 @@ enctype="multipart/form-data">
     </div>
 
     <div class="mb-3">
-        <label class="form-label">isi berita</label>
-        <input type="text" name="isi" class="form-control" 
-            value="{{ $dataBerita->isi_berita }}" required>
+        <label class="form-label">Isi Berita</label>
+        <textarea name="isi" 
+                class="form-control" 
+                rows="6" 
+                required>{{ $dataBerita->isi_berita }}</textarea>
     </div>
 
     <br><br>

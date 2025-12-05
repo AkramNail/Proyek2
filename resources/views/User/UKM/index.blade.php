@@ -58,9 +58,9 @@
     <!-- Deskripsi UKM -->
     <div class="card mt-4 p-4">
         <h4 class="fw-bold">Deskripsi UKM</h4>
-        <p style="text-align: justify; font-size: 15px;">
+        <div style="text-align: justify; font-size: 15px; white-space: pre-line;">
             {{ $dataUKM->deskripsi_Ukm }}
-        </p>
+        </div>
     </div>
 
 </div>

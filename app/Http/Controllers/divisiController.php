@@ -4,63 +4,104 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\anggotaUkm;
+use App\Models\divisi;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class divisiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+
+        $title = 'List Divisi';
+        $slug = 'List Divisi';
+
+        $idUKM = Auth::user()->ukm;
+        
+        $dataDivisi = divisi::where('id_Ukm', $idUKM)->get();
+        $dataAnggotaUkm = anggotaUkm::where('id_Ukm', $idUKM)->get();
+
+        return view('Pengurus/Divisi.index', compact(
+            'title', 'slug', 'dataDivisi' , 'dataAnggotaUkm'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function edit(Request $request){
+
+        $title = 'Edit Divisi';
+        $slug = 'Edit Divisi';
+
+        $idUKM = Auth::user()->ukm;
+
+        $dataDivisi = divisi::where('id_Ukm', $idUKM)->
+            where('id_divisi', $request->id_divisi)
+            ->first();
+
+        return view('Pengurus/Divisi/edit.index', compact(
+            'title', 'slug', 'dataDivisi'));
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+
+        $idUKM = Auth::user()->ukm;
+
+        divisi::where('id_Ukm', $idUKM)->
+            where('id_divisi', $request->id_divisi)
+            ->update([
+
+                'nama_divisi' => $request->nama_divisi,
+                'deskripsi_divisi' => $request->deskripsi_divisi,
+
+            ]);
+
+        return redirect('/pengurus/Divisi')->with('success', 
+            'Divisi berhasil diupdate');
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+    public function tambah(){
+
+        $title = 'Tambah Divisi';
+        $slug = 'Tambah Divisi';
+
+        return view('Pengurus/Divisi/tambah.index', compact(
+            'title', 'slug'));
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+    public function storeTambah(Request $request){
+
+        $idUKM = Auth::user()->ukm;
+
+        divisi::insert([
+
+            'nama_divisi' => $request->nama_divisi,
+            'deskripsi_divisi' => $request->deskripsi_divisi,
+            'id_Ukm' => $idUKM,
+
+        ]);
+            
+        return redirect('/pengurus/Divisi')->with('success', 
+            'Berhasil tambah divisi');
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function hapus(Request $request){
+
+        $idUKM = Auth::user()->ukm;
+
+        divisi::where('id_Ukm', $idUKM)->
+            where('id_divisi', $request->id_divisi)
+            ->delete();
+
+        return redirect('/pengurus/Divisi')->with('success', 
+            'Divisi berhasil dihapus');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+
 }

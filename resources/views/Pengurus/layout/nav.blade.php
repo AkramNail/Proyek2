@@ -54,17 +54,27 @@
         <div class="bg-primary p-3 text-center fw-bold fs-4">E-UKM</div>
 
         <ul class="nav flex-column mt-2">
+          @php
+              $role = Auth::user()->role;
+          @endphp
+
+          @if ($role === 'pembina' || $role === 'pengurus utama')
+            <li class="nav-item">
+              <a class="nav-link {{ ($slug === 'Profil UKM') ? 'active' : '' }}" href="/pengurus/profilUKM">Profil UKM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ ($slug === 'List Anggota UKM') ? 'active' : '' }}" href="/pengurus/daftarAnggota">List Anggota UKM</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ ($slug === 'List Divisi') ? 'active' : '' }}" href="/pengurus/Divisi">List Divisi</a>
+            </li>
+          @endif
+
           <li class="nav-item">
-            <a class="nav-link {{ ($slug === 'Profil UKM') ? 'active' : '' }}" href="/pengurus/profilUKM">Profil UKM</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ ($slug === 'List Kegiatan UKM') ? 'active' : '' }}" href="/pengurus/kegitan">List Kegiatan UKM</a>
+            <a class="nav-link {{ ($slug === 'List Kegiatan UKM') ? 'active' : '' }}" href="/pengurus/kegiatan">List Kegiatan UKM</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ ($slug === 'List Berita UKM') ? 'active' : '' }}" href="/pengurus/berita">List Berita UKM</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ ($slug === 'List Anggota UKM') ? 'active' : '' }}" href="/pengurus/daftarAnggota">List Anggota UKM</a>
           </li>
         </ul>
       </nav>

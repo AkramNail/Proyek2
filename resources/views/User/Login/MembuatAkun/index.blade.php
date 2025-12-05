@@ -36,7 +36,7 @@
     </a>
 
     <br><br>
-    <a href="{{ url('/membuatAkun') }}" class="btn btn-success w-100">
+    <a href="{{ url('/login') }}" class="btn btn-success w-100">
         Sudah punya akun?
     </a>
 

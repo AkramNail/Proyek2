@@ -42,6 +42,10 @@
         <td>{{ $item->created_at }}</td>
         <td>
 
+            <a href="{{ url('/berita/'.$item->id_Berita) }}" class="btn btn-primary w-100">
+                lihat berita
+            </a>
+
             <form method="POST" action="{{ url('/pengurus/berita/edit') }}">
                 {{ csrf_field() }}
                 <input type="hidden" name="id_Berita" class="form-control" 

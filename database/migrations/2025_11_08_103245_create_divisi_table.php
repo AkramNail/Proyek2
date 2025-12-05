@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('divisi', function (Blueprint $table) {
-            $table->integer('id_divisi')->primary();
+            $table->increments('id_divisi');
             $table->string('nama_divisi', 200);
+            $table->text('deskripsi_divisi');
             $table->integer('id_Ukm');
+            $table->timestamps();
         });
     }
 
