@@ -19,6 +19,7 @@
             <th>FOTO</th>
             <th>NAMA KEGIATAN</th>
             <th>JADWAL KEGIATAN</th>
+            <th>PENDAFTAR</th>
             <th>AKSI</th>
         </tr>
     </thead>
@@ -30,6 +31,19 @@
             </td>
             <td>{{ $item->nama_kegiatan }}</td>
             <td>{{ $item->jadwal_keigiatan }}</td>
+            @php $count = 0; @endphp
+
+            @foreach ($dataAnggota as $item2)
+                
+                @if ($item2->id_Kegiatan == $item->id_kegiatan )
+                
+                    @php $count++; @endphp
+
+                @endif
+
+            @endforeach
+            
+            <td>{{ $count }}</td>
             <td>
                 
                 @php $ada = 0; @endphp

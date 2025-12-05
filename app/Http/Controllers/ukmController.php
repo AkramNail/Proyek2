@@ -114,7 +114,6 @@ class ukmController extends Controller
             $success = "";
         }
 
-
         $title = 'Kegiatan';
         $slug = 'kegiatan';
 
@@ -173,7 +172,5 @@ class ukmController extends Controller
             ->with('success', 'Berhasil keluar');
 
     }
-
-
 
 }
