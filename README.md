@@ -13,9 +13,14 @@
     Terdapat 6 akun dengan role yang berbeda-beda yang dapat bapak gunakan:
 </p>
 <p>
-    Catatan: semua akun yang ada di bawah ini memiliki password: password123
+    Catatan:
 </p>
-
+<p>
+        - semua akun yang ada di bawah ini memiliki password: password123
+</p>
+<p>
+        - Untuk mengakses halaman admin dan pengurus dapat dilakukan dengan cara login dihalaman login user setelah itu di bagian navigation terdapat pilihan baru pengurus/admin
+</p>
 <h3>Akun dengan role anggota</h3>
 <h4>Email: bododah123@gmail.com</h4>
 
