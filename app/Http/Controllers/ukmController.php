@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\anggota;
 use App\Models\anggotaUkm;
 use App\Models\kegiatan;
 use App\Models\divisi;
@@ -121,11 +122,16 @@ class ukmController extends Controller
             ->get();
 
         $dataAnggota = anggotaKegiatan::where(
-            'id_Anggota' , Auth::id())
+            'id_Ukm', $id)
+            ->get();
+
+        $dataUser = anggotaKegiatan::where(
+            'id_Ukm', $id)
+            ->where('id_Anggota' , Auth::id())
             ->get();
 
         return view('User/UKM/Kegiatan.index', compact('title', 'slug', 'dataKegitan', 
-            'id', 'dataAnggota', 'success'));
+            'id', 'dataAnggota', 'dataUser', 'success'));
 
     }
 

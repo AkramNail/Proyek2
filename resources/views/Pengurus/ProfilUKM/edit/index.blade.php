@@ -33,7 +33,7 @@ enctype="multipart/form-data">
     </a>
 
     <button type="submit" class="btn btn-success w-100">
-        update berita
+        update profil UKM
     </button>
 
 </form>

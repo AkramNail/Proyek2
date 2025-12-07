@@ -48,7 +48,7 @@
                 
                 @php $ada = 0; @endphp
 
-                @foreach ($dataAnggota as $item2)
+                @foreach ($dataUser as $item2)
                     @if ($item2->id_Kegiatan == $item->id_kegiatan)
                         
                         <!-- Tombol Keluar -->

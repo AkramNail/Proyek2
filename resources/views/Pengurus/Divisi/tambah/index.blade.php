@@ -12,7 +12,7 @@ enctype="multipart/form-data">
     </div>
 
     <div class="mb-3">
-        <label class="form-label">isi berita</label>
+        <label class="form-label">deskripsi divisi</label>
         <textarea name="deskripsi_divisi" class="form-control" rows="8" style="resize: vertical;" 
         required></textarea>
     </div>
